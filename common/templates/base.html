@@ -2,11 +2,12 @@
 <html lang="en">
 
 {% load static %}
+{% load utils %}
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="{% static 'bootstrap4/bootstrap.min.css' %}" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" />
-  <title>{% block title %}Tlitter{% endblock %}</title>
+  <title>{% block title %}Webfin{% endblock %}</title>
   {# <link rel="stylesheet" href="{% static 'custom_styles.css' %}" /> #}
 </head>
 
@@ -20,7 +21,7 @@
        <ul class="navbar-nav mr-auto">
          {% block menu %}
             <li class="nav-item">
-              <a class="nav-link" href="#">XYZ</a>
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
          {% endblock %}
        </ul>
@@ -30,7 +31,7 @@
                <ul class="navbar-nav">
                   <li class="nav-item">
                     <span class="navbar-text">Logged in as</span>
-                    <a class="edit_profile" href="#">{{ user.first_name }} {{ user.last_name }}</a>
+                    <a class="edit_profile" href="#">{{ user|smartusername }}</a>
                   </li>
                   <li class="nav-item">&nbsp;</li>
                   <li class="nav-item">
