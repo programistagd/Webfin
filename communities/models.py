@@ -24,3 +24,8 @@ class Transaction(models.Model):
 
     def __str__(self):
         return "$" + str(self.amount) + " - " + str(self.description)
+
+
+class Membership(models.Model):
+    community = models.ForeignKey(Community)
+    user = settings.AUTH_USER_MODEL
