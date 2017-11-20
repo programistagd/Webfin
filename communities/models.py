@@ -14,8 +14,11 @@ class Community(models.Model):
 
 class Transaction(models.Model):
     concerning = models.ForeignKey(Community, db_index=True)
-    who = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="outgoing_transactions")
-    target = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name="incoming_transactions")
+    who = models.ForeignKey(settings.AUTH_USER_MODEL,
+                            related_name="outgoing_transactions")
+    target = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               null=True, blank=True,
+                               related_name="incoming_transactions")
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=140)
     deleted = models.BooleanField(default=False)

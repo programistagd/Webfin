@@ -6,11 +6,25 @@ from .models import *
 
 
 def home(request):
-    all = Community.objects.all() # TODO not sure if will do it that way later
-    ctx = {"communities": all}
+    memberships = []
+    if request.user.is_authenticated():
+        memberships = request.user.membership_set.all()
+    ctx = {"memberships": memberships}
     return render(request, "Communities/home.html", ctx)
 
 
 @login_required
 def community_add(request):
-    raise PermissionDenied
+    raise PermissionDenied()
+
+
+@login_required
+def community_view(request, cid):
+    community = Community.objects.get(pk=cid)
+    if request.user.membership_set.filter(community=community).count() <= 0:
+        raise PermissionDenied()
+    ctx = {
+        "name": community.name,
+        "about": community.about,
+    }
+    return render(request, "Communities/community_view.html", ctx)

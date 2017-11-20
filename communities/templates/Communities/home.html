@@ -3,8 +3,8 @@
 {% block content %}
 <h2>Hello world</h2>
 
-{% for community in communities %}
-    {{ community }}
+{% for mem in memberships %}
+    <a href="{% url 'Communities:community_view' cid=mem.community.id %}">{{ mem.community }}</a>
 {% endfor %}
 
 {# <a class="btn btn-success" href="{% url 'Communities:community_add' %}">Add a community</a> #}
