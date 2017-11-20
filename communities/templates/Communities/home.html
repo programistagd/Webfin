@@ -3,9 +3,15 @@
 {% block content %}
 <h2>Hello world</h2>
 
-{% for mem in memberships %}
-    <a href="{% url 'Communities:community_view' cid=mem.community.id %}">{{ mem.community }}</a>
-{% endfor %}
+    <ul>
+    {% for mem in memberships %}
+        <li>
+            <a href="{% url 'Communities:community_view' cid=mem.community.id %}">{{ mem.community }}</a>
+        </li>
+    {% empty %}
+        <p>You aren't assigned to any communities.</p>
+    {% endfor %}
+    </ul>
 
 {# <a class="btn btn-success" href="{% url 'Communities:community_add' %}">Add a community</a> #}
 {% endblock %}

@@ -1,14 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h2>{{ name }}</h2>
-{{ about }}
-
-<h4>Summary</h4>
-    TODO
-
-<h4>Transaction history</h4>
+<div class="row">
+    <div class="col-7">
+        <h2>{{ name }}</h2>
+        <p>
+            {{ about }}
+        </p>
+    </div>
+</div>
+<br>
+<div class="row">
+<div class="col-5">
+    <h4>Summary</h4>
+    <table class="table">
+    <tbody>
+    {% for b in balances %}
+        <tr>
+            <td>{{ b.name }}</td>
+            {% if b.balance < 0 %}
+                <td class="text-danger">{{ b.balance }}</td>
+            {% else %}
+                <td class="text-success">{{ b.balance }}</td>
+            {% endif %}
+        </tr>
+    {% empty %}
+        <tr><td>Something super strange! This community has no members. The website should have crashed anyway.</td></tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <small>Negative balance means the person owes to the people with positive balance.</small>
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col-12">
+    <h4>Transaction history</h4>
     <table class="table">
         <thead>
         <tr>
@@ -41,4 +68,6 @@
         {% endfor %}
     </tbody>
     </table>
+</div>
+</div>
 {% endblock %}
