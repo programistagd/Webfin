@@ -89,7 +89,7 @@ def handle_form_tx_add_normal(request, community, members):
         return form
 
     form = NormalTransactionForm()
-    form.fields["target"].queryset = members
+    form.fields["target"].queryset = members.exclude(id=request.user.id)
     return form
 
 

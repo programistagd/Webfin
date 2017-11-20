@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-7 my-2">
         <h2>{{ name }}</h2>
         <p>
             {{ about }}
         </p>
     </div>
 </div>
-<br>
+
 <div class="row">
-<div class="col-lg-5">
+<div class="col-lg-5 my-2">
     <h4>Summary</h4>
     <table class="table">
     <tbody>
@@ -32,16 +32,16 @@
     <small>Negative balance means the person owes to the people with positive balance.</small>
 </div>
 </div>
-<br>
+
 <div class="row">
-<div class="col-lg-6">
+<div class="col-lg-6 my-2">
     <form method="post">
         {% csrf_token %}
         {{ shop_form.as_p }}
         <button name="form_type" value="shop" type="submit" class="btn btn-primary">Add purchase</button>
     </form>
 </div>
-<div class="col-lg-6">
+<div class="col-lg-6 my-2">
     <form method="post">
         {% csrf_token %}
         {{ normal_form.as_p }}
@@ -49,9 +49,9 @@
     </form>
 </div>
 </div>
-<br>
+
 <div class="row">
-<div class="col-12">
+<div class="col-12 my-2">
     <h4>Transaction history</h4>
     <table class="table">
         <thead>
