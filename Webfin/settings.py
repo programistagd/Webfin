@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'common.apps.CommonConfig',
     'communities.apps.CommunitiesConfig',
+    'moneytracker.apps.MoneyTrackerConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,8 +78,8 @@ WSGI_APPLICATION = 'Webfin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'webfin',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'webfindb',
     }
 }
 

@@ -19,6 +19,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^communities/', include('communities.urls')),
+    url(r'^moneytrack/', include('moneytracker.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^', include('common.urls')),
     url(r'^$', RedirectView.as_view(pattern_name='Communities:home', permanent=False), name="index"),
